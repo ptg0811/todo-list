@@ -6,7 +6,7 @@
 
 > [link](https://todo-list-one-indol.vercel.app/)
 
-<img src="./img/preview.png>
+<img src="./img/preview.png">
 
 ### 2. Components
 
