@@ -18,10 +18,21 @@
 - **{workingLists, doneLists}** filter를 사용하여 isDone값에 따라 배열을 새로 생성해주고 map으로 새로운 배열을 생성합니다. 그리고 그 데이터를 child component<List>에 props로 내려줍니다.
 - **{onSubmitHandler}** 새로 입력되는 title과 desc 값을 변경해주는 state를 만들어주고 onClick시에 이를 새로운 요소로 생성해주는 eventhandler를 만들어 주었습니다. if를 사용하여 input에 아무것도 입력되지 않았을 경우에는 함수가 실행되지 않도록 하였습니다.
 
-#### 2. List()
+#### 2. AddForm()
+
+- 배열 요소 생성과 추가하기 버튼 기능을 묶어 추가하기 기능을 따로 분리하였씁니다.
+
+#### 3. ListContainer()
+
+- List card가 출력되는 부분을 따로 분리하였습니다.
+
+* 주요 기능은 isDone 값에 따라 Working과 Done section 에 따로 출력되는 것입니다.
+* 메소드로는 filter, map을 사용하였습니다.
+
+#### 4. List()
 
 - Todo list의 내용을 나타내는 사각형의 card가 반복적으로 구성되어야 하기때문에 Child component로 List를 생성하였습니다.
-- props를 사용하여 parent component인 App 에서 todoLists의 속성값인 .title과 .desc를 받도록 하였습니다.
-- **삭제하기** 기능을 수행하는 버튼을 생성하고 eventhandler인 {deleteTodoListHandler} 와 연결되어 있습니다. 연결시에 key값을 parameter로 넘겨줍니다.
-- **완료,취소** 기능을 수행하는 버튼을 생성하여 eventhandler인 {onChangeHandler} 와 연결되어 있습니다. 작동시에 key값을 넘겨주고 해당 key값을 가지고 있는 요소의 isDone값을 역전해줍니다.
+- 구조 분해 할당으로 setTodoLists, todoLists, todoList을 내려주었습니다.
+- **삭제하기** 기능을 수행하는 버튼을 생성하고 eventhandler를 함께 구성하였습니다.
+- **완료,취소** 기능을 수행하는 버튼을 생성하여 eventhandler를 함께 구성하였습니다. 작동시에 id값을 넘겨주고 조건문에 따라 해당 id을 가지고 있는 요소의 isDone값을 역전해줍니다. 메소드로는 map을 사용하였습니다.
 - **완료,취소** props로 받는 isDone 값에 따라 버튼이 취소 혹은 완료로 변환되도록 삼항연산자로 구현하였습니다.
