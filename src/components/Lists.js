@@ -1,5 +1,23 @@
 // child component인 List를 설정
-const List = ({ handleDelete, handleDone, todoList }) => {
+// 함수 setTodoLists, 배열 todoLists, map으로 생성된 인자 todoList 를 props 로 받아옴
+const List = ({ setTodoLists, todoLists, todoList }) => {
+  const deleteTodoList = (id) => {
+    // '삭제' 버튼을 클릭했을때 실행되는 handler
+    // filter를 통해서 받아오는 id값과 다른 id값을 가진 객체들만으로 새로운 배열을 구성해서 state로 넘겨주는 것.
+    setTodoLists(todoLists.filter((todoList) => todoList.id !== id));
+  };
+
+  const onChangeDone = (id) => {
+    setTodoLists(
+      todoLists.map((todoList) => {
+        if (todoList.id === id) {
+          return { ...todoList, isDone: !todoList.isDone };
+        }
+        return todoList;
+      })
+    );
+  };
+
   return (
     // 컴포넌트로 이러한 사각형 형태의 카드를 만들어준다.
     <div className="square-style">
@@ -11,9 +29,9 @@ const List = ({ handleDelete, handleDone, todoList }) => {
       <div className="button-set">
         <button
           className="todo-delete-button button"
-          // props로 handleDelete값을 받아오면서 id를 함수로 넘겨준다.
+          // 함수로 deleteTodoList를 바로 넣어주고 todoList의 id를 parameter로 넣어준다.
           onClick={() => {
-            handleDelete(todoList.id);
+            deleteTodoList(todoList.id);
           }}
         >
           삭제
@@ -21,7 +39,7 @@ const List = ({ handleDelete, handleDone, todoList }) => {
         <button
           className="todo-complete-button button"
           onClick={() => {
-            handleDone(todoList.id);
+            onChangeDone(todoList.id);
           }}
           // isDone 값에 따라 버튼의 글자가 바뀌도록 삼항연산자를 설정하고 렌더링해준다.
           // {조건문 ? true인 경우 : false인 경우}
