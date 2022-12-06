@@ -29,20 +29,7 @@ export const deleteList = (id) => {
 
 // Initial state
 const initialState = {
-  lists: [
-    {
-      id: 0,
-      title: "리액트 공부하기",
-      desc: "리액트 기초를 공부해봅시다",
-      isDone: false,
-    },
-    {
-      id: 1,
-      title: "리액트 알아보기",
-      desc: "리액트 기초를 알아봅시다",
-      isDone: true,
-    },
-  ],
+  lists: [],
 };
 
 // Reducer

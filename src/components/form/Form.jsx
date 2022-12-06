@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { submit } from "/Users/bagtaegeun/projects/todo-list/src/redux/modules/todos";
 import "./style.css";
 
-const Form = ({}) => {
+const Form = () => {
   // Form
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");

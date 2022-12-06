@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   changeDone,
   deleteList,
@@ -26,6 +27,15 @@ const Todo = ({ list }) => {
   return (
     // 컴포넌트로 이러한 사각형 형태의 카드를 만들어준다.
     <div className="square-style">
+      <div>
+        {
+          <div key={list.id}>
+            <Link to={`/${list.id}`}>
+              <span>상세보기</span>
+            </Link>
+          </div>
+        }
+      </div>
       <h2 // props를 이용해 부모 conponent에서 title을 받아와서 이부분에 렌더링한다.
       >
         {list.title}
@@ -56,3 +66,27 @@ const Todo = ({ list }) => {
 };
 
 export default Todo;
+
+// // src/pages/Works.js
+
+// import React from 'react';
+// import { Link, useParams } from 'react-router-dom';
+
+// function Works() {
+//   return (
+//     <div>
+//       {data.map((work) => {
+//         return (
+//           <div key={work.id}>
+//             <div>할일: {work.id}</div>
+//             <Link to={`/works/${work.id}`}>
+//               <span style={{ cursor: 'pointer' }}>➡️ Go to: {work.todo}</span>
+//             </Link>
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// }
+
+// export default Works;
