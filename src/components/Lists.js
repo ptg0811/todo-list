@@ -1,9 +1,5 @@
-// child component인 List를 설정
-// 함수 setTodoLists, 배열 todoLists, map으로 생성된 인자 todoList 를 props 로 받아옴
 const List = ({ setTodoLists, todoLists, todoList }) => {
   const deleteTodoList = (id) => {
-    // '삭제' 버튼을 클릭했을때 실행되는 handler
-    // filter를 통해서 받아오는 id값과 다른 id값을 가진 객체들만으로 새로운 배열을 구성해서 state로 넘겨주는 것.
     setTodoLists(todoLists.filter((todoList) => todoList.id !== id));
   };
 
@@ -19,7 +15,6 @@ const List = ({ setTodoLists, todoLists, todoList }) => {
   };
 
   return (
-    // 컴포넌트로 이러한 사각형 형태의 카드를 만들어준다.
     <div className="square-style">
       <h2 // props를 이용해 부모 conponent에서 title을 받아와서 이부분에 렌더링한다.
       >

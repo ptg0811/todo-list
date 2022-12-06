@@ -63,13 +63,10 @@ const todoLists = (state = initialState, action) => {
       };
     case "CHANGE_DONE":
       return {
-        ...state,
-        lists: state.lists.map((list) => {
-          if (list.id === action.id) {
-            return { ...list, isDone: !action.isDone };
-          }
-          return list;
-        }),
+        lists: state.lists.map((list) => ({
+          ...list,
+          isDone: list.id === action.id ? !list.isDone : list.isDone,
+        })),
       };
     case "DELETE_LIST":
       return {
