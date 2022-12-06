@@ -1,48 +1,76 @@
 // React를 사용한다. state hook을 사용하기 위해 { useState } 를 불러옴
 import React, { useState } from "react";
 import "./App.css"; // 🔥 반드시 App.css 파일을 import 해줘야 합니다.
-import ListContainer from "./components/ListContainer";
-import AddForm from "./components/AddForm";
+import { useSelector, useDispatch } from "react-redux";
+import { submit, changeDone, deleteList } from "./redux/modules/todos";
 
 const App = () => {
-  const [todoLists, setTodoLists] = useState([
-    // todoLists 객체로 state hook을 지정해주었음
-    {
-      // 초기 id값은 0과 1로 설정하였고, 새로 등록되는 요소는 Date.now()를 사용할 예정
-      id: 0,
-      title: "리액트 공부하기",
-      desc: "리액트 기초를 공부해봅시다",
-      // 진행중과 완료 상태를 표현하기 위해 isDone 값을 true, false로 지정하였음
-      isDone: false,
-    },
-    {
-      id: 1,
-      title: "리액트 알아보기",
-      desc: "리액트 기초를 알아봅시다",
-      isDone: true,
-    },
-  ]);
+  // Form
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+
+  const todosStore = useSelector((state) => state.todos.lists);
+  const dispatch = useDispatch();
+
+  const onChangeTitle = (event) => {
+    const { value } = event.target;
+    setTitle(value);
+  };
+
+  const onChangeDesc = (event) => {
+    const { value } = event.target;
+    setDesc(value);
+  };
+
+  const onSubmitTodoItem = () => {
+    dispatch(submit(title, desc));
+  };
+
+  console.log(todosStore);
+  // End of Form
+
+  // List
+
+  const deleteListItem = (id) => {
+    dispatch(deleteList(id));
+  };
+
+  const onChangeDone = (id) => {
+    dispatch(changeDone(id));
+  };
+
+  // End of List
 
   return (
-    <div className="layout">
-      <div className="container">
-        <div>My Todo List</div>
-        <div>React</div>
-      </div>
-      <AddForm
-        /*???? 여기에는 key값이 필요하지 않은걸까 ????*/ setTodoLists={
-          setTodoLists
-        }
-        todoLists={todoLists}
-      />
+    <div>
       <div>
-        <ListContainer
-          /*???? 여기에는 key값이 필요하지 않은걸까 ????*/ setTodoLists={
-            setTodoLists
-          }
-          todoLists={todoLists}
-        />
+        <label>제목</label>
+        <input type="title" onChange={onChangeTitle} />
+        <label>내용</label>
+        <input type="desc" onChange={onChangeDesc} />
       </div>
+      <button
+        onClick={() => {
+          onSubmitTodoItem();
+        }}
+      >
+        추가하기
+      </button>
+      <div></div>
+      <button
+        onClick={() => {
+          onChangeDone(0);
+        }}
+      >
+        완료
+      </button>
+      <button
+        onClick={() => {
+          deleteListItem(0);
+        }}
+      >
+        삭제
+      </button>
     </div>
   );
 };
