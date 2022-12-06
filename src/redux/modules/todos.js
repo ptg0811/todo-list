@@ -12,11 +12,10 @@ export const submit = (title, desc) => {
   };
 };
 
-export const changeDone = (id, isDone) => {
+export const changeDone = (id) => {
   return {
     type: CHANGE_DONE,
     id,
-    isDone,
   };
 };
 
