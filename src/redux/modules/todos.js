@@ -40,8 +40,6 @@ const todoLists = (state = initialState, action) => {
     isDone: false,
   };
 
-  // isDone 값을 바꿔주는 작업을 어떻게 할수 있을까s
-
   switch (action.type) {
     case "SUBMIT":
       return {
