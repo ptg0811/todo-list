@@ -21,7 +21,12 @@ const List = () => {
   return (
     <div className="list-container">
       <div>
-        <h2 className="list-title">Working.. 🔥</h2>
+        <h2 className="list-title">
+          Working..{" "}
+          <span role="img" aria-labelledby="flame">
+            🔥
+          </span>
+        </h2>
         <div
           className="app-style" // 렌더링되도록 {workingLists} 변수를 받아옴
         >
@@ -29,7 +34,12 @@ const List = () => {
         </div>
       </div>
       <div>
-        <h2 className="list-title">Done..! 🎉</h2>
+        <h2 className="list-title">
+          Done..!{" "}
+          <span role="img" aria-labelledby="confeti">
+            🎉
+          </span>
+        </h2>
         <div
           className="app-style" // 렌더링되도록 {workingLists} 변수를 받아옴
         >
