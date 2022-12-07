@@ -1,10 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  changeDone,
-  deleteList,
-} from "/Users/bagtaegeun/projects/todo-list/src/redux/modules/todos";
+import { changeDone, deleteList } from "../../redux/modules/todos";
 import "./style.css";
 
 // child component인 List를 설정

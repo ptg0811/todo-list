@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { submit } from "/Users/bagtaegeun/projects/todo-list/src/redux/modules/todos";
+import { submit } from "../../redux/modules/todos";
 import "./style.css";
 
 const Form = () => {
